@@ -146,6 +146,10 @@ class Paper extends React.Component {
         this.setMode(MODE.RECTANGLE);
         break;
 
+      case KEY.T:
+        // TODO:
+        break;
+
       case KEY.A:
         this.setMode(MODE.ARROW);
         break;
@@ -390,6 +394,7 @@ class Paper extends React.Component {
 
           case MODE.ARROW:
           case MODE.ELLIPSE:
+          case MODE.TEXT:
           case MODE.RECTANGLE:
             newState.currentShape.preserveAspectRatio = event.shiftKey;
             newState.currentShape.x2 = this.toTrueX(cursorX);
@@ -472,6 +477,7 @@ class Paper extends React.Component {
   };
 
   createShapeElement(shape) {
+    console.log()
     let strokeColor = shape.color;
     if (shape.type === MODE.ERASE) {
       strokeColor = this.props.isDarkMode
@@ -520,7 +526,7 @@ class Paper extends React.Component {
             strokeLinecap="round"
             strokeLinejoin="round"
             stroke={strokeColor}
-            strokeWidth={shape.linewidth }
+            strokeWidth={shape.linewidth}
           />
         );
       }
@@ -564,7 +570,17 @@ class Paper extends React.Component {
       }
 
       case MODE.TEXT: {
-        //TODO: handle
+        const x = this.toTrueX(this.state.cursorX)
+        const y = this.toTrueY(this.state.cursorY)
+        //TODO:
+        navigator.clipboard.readText()
+          .then((t) => {
+            console.log(t)
+            return (
+              <text x={x} y={y} fill="red"> {t} </text>
+            )
+          })
+        break
       }
       case MODE.ARROW: {
         // Calculate the angle for the arrow head based on the slope of the
