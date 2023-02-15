@@ -4,7 +4,7 @@ import { LINEWIDTH, MODE } from './../../constants';
 
 import { ReactComponent as PanIcon } from './../../../../assets/icons/move.svg';
 import { ReactComponent as EraserIcon } from './../../../../assets/icons/eraser.svg';
-// import { ReactComponent as MaximizeIcon } from './../../../../assets/icons/maximize.svg';
+import { ReactComponent as TextIcon } from './../../../../assets/icons/T-letter.svg';
 import { ReactComponent as ZoomInIcon } from './../../../../assets/icons/zoom-in.svg';
 import { ReactComponent as ZoomOutIcon } from './../../../../assets/icons/zoom-out.svg';
 import { ReactComponent as UndoIcon } from './../../../../assets/icons/undo.svg';
@@ -132,6 +132,27 @@ function Toolbar(props) {
             })}
           >
             <RectangleToolIcon />
+          </div>
+        </Tooltip>
+        <Tooltip
+          placement="top"
+          overlay={
+            <>
+              text
+              <div className="kbd-shortcut">
+                <kbd>t</kbd>
+              </div>
+            </>
+          }
+        >
+          <div
+            onClick={props.onClickTextTool}
+            className={classNames(styles['toolbar__item'], {
+              [styles['toolbar__item-disabled']]: !props.isDrawMode,
+              [styles['toolbar__item-active']]: props.mode === MODE.TEXT,
+            })}
+          >
+            <TextIcon/>
           </div>
         </Tooltip>
         <Tooltip

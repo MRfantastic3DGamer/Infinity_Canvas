@@ -406,7 +406,7 @@ class Paper extends React.Component {
   };
 
   isDrawMode = () => {
-    return [MODE.FREEHAND, MODE.ELLIPSE, MODE.RECTANGLE, MODE.ARROW].includes(this.state.mode);
+    return [MODE.FREEHAND, MODE.ELLIPSE, MODE.RECTANGLE, MODE.TEXT, MODE.ARROW].includes(this.state.mode);
   };
 
   isDrawing = () => {
@@ -563,6 +563,9 @@ class Paper extends React.Component {
         );
       }
 
+      case MODE.TEXT: {
+        //TODO: handle
+      }
       case MODE.ARROW: {
         // Calculate the angle for the arrow head based on the slope of the
         // middle line. We add 45 (degrees) at the end, in order to make angle
@@ -751,6 +754,7 @@ class Paper extends React.Component {
   onClickFreehandTool = () => this.setMode(MODE.FREEHAND);
   onClickEllipseTool = () => this.setMode(MODE.ELLIPSE);
   onClickRectangleTool = () => this.setMode(MODE.RECTANGLE);
+  onClickTextTool = () => this.setMode(MODE.TEXT);
   onClickArrowTool = () => this.setMode(MODE.ARROW);
   onClickEraseTool = () => this.toggleEraseMode();
   onClickPanTool = () => this.togglePanMode();
@@ -788,6 +792,7 @@ class Paper extends React.Component {
           onClickFreehandTool={this.onClickFreehandTool}
           onClickEllipseTool={this.onClickEllipseTool}
           onClickRectangleTool={this.onClickRectangleTool}
+          onClickTextTool={this.onClickTextTool}
           onClickArrowTool={this.onClickArrowTool}
           onClickEraseTool={this.onClickEraseTool}
           onClickPanTool={this.onClickPanTool}

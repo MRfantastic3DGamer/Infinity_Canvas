@@ -8,6 +8,7 @@ export const MODE = {
   FREEHAND: 'freehand',
   ELLIPSE: 'ellipse',
   RECTANGLE: 'rectangle',
+  TEXT: 'text',
   ARROW: 'arrow',
   PAN: 'pan',
   ERASE: 'erase',
